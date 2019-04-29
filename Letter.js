@@ -6,7 +6,7 @@ function Letter(char) {
             return this.char;
         }
         else {
-            return "*";
+            return "_";
         }
     }
     this.Test = function(letter) {
@@ -14,6 +14,10 @@ function Letter(char) {
             this.guessed = true;
         }
     }
+}
+
+exports.Letter = {
+    thing: Letter
 }
 
 // var test = new Letter("a");
