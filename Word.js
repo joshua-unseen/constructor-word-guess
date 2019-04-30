@@ -1,4 +1,4 @@
-var a = require("./Letter.js");
+var Letter = require("./Letter.js");
 
 function Word(theWord) {
     this.word = [];
