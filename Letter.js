@@ -16,9 +16,7 @@ function Letter(char) {
     }
 }
 
-exports.Letter = {
-    thing: Letter
-}
+module.exports = Letter;
 
 // var test = new Letter("a");
 

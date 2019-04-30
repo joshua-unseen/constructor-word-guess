@@ -3,7 +3,7 @@ var a = require("./Letter.js");
 function Word(theWord) {
     this.word = [];
     for (var i = 0; i < theWord.length; i++) {
-        var letter = new a.Letter.thing(theWord.charAt(i));
+        var letter = new Letter(theWord.charAt(i));
         this.word.push(letter);
     }
 
@@ -21,9 +21,7 @@ function Word(theWord) {
     }
 }
 
-exports.Word = {
-    thing: Word
-}
+module.exports = Word;
 
 // var test = new Word("testing");
 // console.log(test.word);
