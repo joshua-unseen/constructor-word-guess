@@ -5,20 +5,26 @@ function Letter(char) {
         if (this.guessed) {
             return this.char;
         }
+        else if (this.char.match(/^[^a-z]$/i)) {
+            this.guessed = true;
+            return this.char;
+        }
         else {
             return "_";
         }
     }
     this.Test = function(letter) {
-        if (letter === this.char) {
+        // console.log("Letter " + letter);
+        if (letter === this.char.toLowerCase()) {
             this.guessed = true;
         }
+        return this.guessed;
     }
 }
 
 module.exports = Letter;
 
-// var test = new Letter("a");
+// var test = new Letter("\'");
 
 // test.Test("b");
 // console.log(test.guessed);

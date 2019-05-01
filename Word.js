@@ -2,6 +2,8 @@ var Letter = require("./Letter.js");
 
 function Word(theWord) {
     this.word = [];
+    this.solved = false;
+
     for (var i = 0; i < theWord.length; i++) {
         var letter = new Letter(theWord.charAt(i));
         this.word.push(letter);
@@ -12,11 +14,15 @@ function Word(theWord) {
         this.word.forEach(element => {
             displayString += element.toString() + " ";
         });
-        return displayString.trim();
+        return "\n" + displayString.trim() + "\n";
     }
     this.Guess = function(letter) {
+        // console.log("Word " + letter);
+        this.solved = true;
         this.word.forEach(element => {
-            element.Test(letter);
+            if (element.Test(letter) === false) {
+                this.solved = false;
+            }
         });
     }
 }
