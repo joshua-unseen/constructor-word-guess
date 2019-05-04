@@ -3,6 +3,7 @@ var Letter = require("./Letter.js");
 function Word(theWord) {
     this.word = [];
     this.solved = false;
+    this.goodGuess = false;
 
     for (var i = 0; i < theWord.length; i++) {
         var letter = new Letter(theWord.charAt(i));
@@ -10,17 +11,18 @@ function Word(theWord) {
     }
 
     this.Show = function() {
-        var displayString = ""
-        this.word.forEach(element => {
-            displayString += element.toString() + " ";
-        });
-        return "\n" + displayString.trim() + "\n";
+        var displayString = this.word.join(" ");
+        return "\n" + displayString + "\n";
     }
     this.Guess = function(letter) {
         // console.log("Word " + letter);
+        this.goodGuess = false;
         this.solved = true;
         this.word.forEach(element => {
-            if (element.Test(letter) === false) {
+            if (element.Test(letter)) {
+                this.goodGuess = true;
+            }
+            else if (element.guessed === false) {
                 this.solved = false;
             }
         });

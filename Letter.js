@@ -17,8 +17,11 @@ function Letter(char) {
         // console.log("Letter " + letter);
         if (letter === this.char.toLowerCase()) {
             this.guessed = true;
+            return this.char;
         }
-        return this.guessed;
+        else {
+            return null;
+        }
     }
 }
 
