@@ -4,23 +4,20 @@ function Word(theWord) {
     this.word = [];
     this.solved = false;
     this.goodGuess = false;
+    this.count = 0;
     
     for (var i = 0; i < theWord.length; i++) {
-        var letter = new Letter(theWord.charAt(i));
+        var theChar = theWord.charAt(i)
+        // var tempCount = [];
+        var letter = new Letter(theChar);
+        if (this.word.indexOf(letter) === -1 && theChar.match(/^[a-z]$/)) {
+            // tempCount.push(theChar);
+            this.count++;
+        }
         this.word.push(letter);
     }
+    this.count += 7;
     
-    this.GenCount = function() {
-        var tempCount =[];
-        for (var i = 0; i < theWord.length; i++) {
-            var theLetter = theWord.charAt(i);
-            if (tempCount.indexOf(theLetter) === -1 && theLetter.match(/^[a-z]$/)) {
-                tempCount.push(theLetter);
-            }
-        }
-        return tempCount.length + 6;
-    }
-    this.count = this.GenCount();
     
     this.Show = function() {
         var displayString = this.word.join(" ");
@@ -28,16 +25,22 @@ function Word(theWord) {
     }
     this.Guess = function(letter) {
         // console.log("Word " + letter);
-        this.goodGuess = false;
+        var goodGuess = false;
         this.solved = true;
         this.word.forEach(element => {
             if (element.Test(letter)) {
-                this.goodGuess = true;
+                goodGuess = true;
             }
             else if (element.guessed === false) {
                 this.solved = false;
             }
         });
+        if (goodGuess) {
+            console.log("CORRECT!\n");
+        }
+        else {
+            console.log("INCORRECT!\n");
+        }
     }
 }
 

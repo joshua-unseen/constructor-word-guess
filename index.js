@@ -57,12 +57,6 @@ function playGame(puzzle) {
             // console.log(value);
             puzzle.Guess(guess.letter.toLowerCase());
             console.log(puzzle.Show());
-            if (puzzle.goodGuess) {
-                console.log("CORRECT!\n");
-            }
-            else {
-                console.log("INCORRECT!\n");
-            }
             playGame(puzzle);
         })
     }
