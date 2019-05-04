@@ -4,12 +4,24 @@ function Word(theWord) {
     this.word = [];
     this.solved = false;
     this.goodGuess = false;
-
+    
     for (var i = 0; i < theWord.length; i++) {
         var letter = new Letter(theWord.charAt(i));
         this.word.push(letter);
     }
-
+    
+    this.GenCount = function() {
+        var tempCount =[];
+        for (var i = 0; i < theWord.length; i++) {
+            var theLetter = theWord.charAt(i);
+            if (tempCount.indexOf(theLetter) === -1 && theLetter.match(/^[a-z]$/)) {
+                tempCount.push(theLetter);
+            }
+        }
+        return tempCount.length + 6;
+    }
+    this.count = this.GenCount();
+    
     this.Show = function() {
         var displayString = this.word.join(" ");
         return "\n" + displayString + "\n";
