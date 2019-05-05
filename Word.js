@@ -25,6 +25,7 @@ function Word(theWord) {
     }
     this.Guess = function(letter) {
         // console.log("Word " + letter);
+        this.count--;
         var goodGuess = false;
         this.solved = true;
         this.word.forEach(element => {
@@ -36,10 +37,10 @@ function Word(theWord) {
             }
         });
         if (goodGuess) {
-            console.log("CORRECT!\n");
+            return "CORRECT!\n";
         }
         else {
-            console.log("INCORRECT!\n");
+            return "INCORRECT!\n";
         }
     }
 }

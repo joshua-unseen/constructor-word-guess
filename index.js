@@ -53,10 +53,10 @@ function playGame(puzzle) {
                 }
             }
         ]).then(guess => {
-            puzzle.count--;
             // console.log(value);
-            puzzle.Guess(guess.letter.toLowerCase());
+            var guessResult = puzzle.Guess(guess.letter.toLowerCase());
             console.log(puzzle.Show());
+            console.log(guessResult);
             playGame(puzzle);
         })
     }
