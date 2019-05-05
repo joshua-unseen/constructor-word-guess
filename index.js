@@ -6,7 +6,6 @@ var wordArray = [
     "Atreidies",
     "Harkonnen",
     "Mentat",
-    "Spice Melange",
     "Stilgar",
     "Chani",
     "Feyd Rautha",
@@ -17,24 +16,37 @@ var wordArray = [
     "Sandworm",
     "Gom Jabbar"
 ];
-var count = 0;
+// var count = 0;
 var guesses = [];
+var puzzleIndex = 0;
 
+console.log("ARE WE DUNE YET?");
 initGame();
 
 function initGame() {
-    // debugger;
-    var puzzle = new Word(wordArray[Math.floor(Math.random() * wordArray.length)]);
+    // console.log(wordArray);
+    puzzleIndex = Math.floor(Math.random() * wordArray.length);
+    var puzzle = new Word(wordArray[puzzleIndex]);
+    console.log(puzzle.Show());
     // count = puzzle.word.length + 5;
     guesses = [];
-    console.log("ARE WE DUNE YET?");
     playGame(puzzle);
+}
+function resetGame() {
+    wordArray.splice(puzzleIndex, 1);
+    if (wordArray.length) {
+        console.log("You solved it!  Next puzzle:");
+        initGame();
+    }
+    else {
+        console.log("All puzzles solved!");
+    }
 }
 
 function playGame(puzzle) {
     if (puzzle.count) {
         if (puzzle.solved) {
-            console.log("You solved it!");
+            resetGame();
             return;
         }
         if (puzzle.count < 10) {
