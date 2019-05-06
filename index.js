@@ -24,6 +24,7 @@ var wordArray = [
 var guesses = [];
 var puzzleIndex = 0;
 
+console.clear();
 console.log("ARE WE DUNE YET?");
 initGame();
 
@@ -48,11 +49,11 @@ function resetGame() {
 }
 
 function playGame(puzzle) {
-    if (puzzle.count) {
-        if (puzzle.solved) {
-            resetGame();
-            return;
-        }
+    if (puzzle.solved) {
+        resetGame();
+        return;
+    }
+    else if (puzzle.count) {
         if (puzzle.count < 10) {
             console.log(puzzle.count + " GUESSES LEFT\n");
         }
