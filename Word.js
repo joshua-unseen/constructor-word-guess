@@ -36,12 +36,7 @@ function Word(theWord) {
                 this.solved = false;
             }
         });
-        if (goodGuess) {
-            return "CORRECT!\n";
-        }
-        else {
-            return "INCORRECT!\n";
-        }
+        return goodGuess;
     }
 }
 

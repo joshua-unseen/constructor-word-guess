@@ -1,5 +1,9 @@
 var Word = require("./Word");
 var inquirer = require("inquirer");
+var clc = require("cli-color");
+
+var wrong = clc.red;
+var right = clc.green;
 
 var wordArray = [
     "Muad'dib",
@@ -68,7 +72,12 @@ function playGame(puzzle) {
             // console.log(value);
             var guessResult = puzzle.Guess(guess.letter.toLowerCase());
             console.log(puzzle.Show());
-            console.log(guessResult);
+            if (guessResult) {
+                    console.log(right("CORRECT!\n"));
+                }
+                else {
+                    console.log(wrong("INCORRECT!\n"));
+                }
             playGame(puzzle);
         })
     }
