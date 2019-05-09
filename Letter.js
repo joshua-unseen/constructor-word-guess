@@ -21,8 +21,9 @@ function Letter(char) {
         // console.log("Letter " + letter);
         if (letter === this.char.toLowerCase()) {   // flip this.guessed to 'true' if the test matches, otherwise, leave it alone
             this.guessed = true;
+            return true;
         }
-        return this.guessed;
+        return false;
     }
 }
 
