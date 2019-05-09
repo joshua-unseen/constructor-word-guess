@@ -1,27 +1,28 @@
 function Letter(char) {
     this.char = char;
-    this.guessed = false;
+    this.guessed = false;   //  has the letter been guessed?
+
+    //  Our display function.  Returns a string
     this.toString = function() {
         if (this.guessed) {
-            return this.char;
+            return this.char;   //  if it's been guessed, show it
         }
         else if (this.char.match(/^[^a-z]$/i)) {
             this.guessed = true;
-            return this.char;
+            return this.char;   // if it's not a letter, mark it as guessed and show it
         }
         else {
-            return "_";
+            return "_";     // show the placeholder
         }
     }
+
+    //  Our test function.  Returns boolean
     this.Test = function(letter) {
         // console.log("Letter " + letter);
-        if (letter === this.char.toLowerCase()) {
+        if (letter === this.char.toLowerCase()) {   // flip this.guessed to 'true' if the test matches, otherwise, leave it alone
             this.guessed = true;
-            return this.char;
         }
-        else {
-            return null;
-        }
+        return this.guessed;
     }
 }
 
